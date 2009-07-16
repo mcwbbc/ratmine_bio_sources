@@ -1,0 +1,3 @@
+||:org.intermine.bio.dataconversion.QtlGFF3RecordHandler
+org.intermine.bio.dataconversion.QtlGFF3RecordHandler
+org.intermine.bio.dataconversion.GFF3RecordHandler

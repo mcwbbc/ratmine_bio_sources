@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<classes>
+	<class name="MPTerm" extends="OntologyTerm" is-interface="true">
+		<collection name="mpAnnotations" referenced-type="MPAnnotation" reverse-reference="mpTerm"/>
+	</class>
+<class name="MPAnnotation" extends="OntologyAnnotation" is-interface="true">
+  <attribute name="withText" type="java.lang.String"/>
+  <collection name="mpEvidenceCodes" referenced-type="MPEvidenceCode"/>
+  <collection name="with" referenced-type="BioEntity"/>
+	<reference name="mpTerm" referenced-type="MPTerm" reverse-reference="mpAnnotations"/>
+</class>
+<class name="Gene" is-interface="true">
+  <collection name="mpAnnotations" referenced-type="MPAnnotation"/>
+</class>
+<class name="MPEvidenceCode" is-interface="true">
+  <attribute name="code" type="java.lang.String" />
+</class>
+</classes>

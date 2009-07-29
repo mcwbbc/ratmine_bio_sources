@@ -387,7 +387,7 @@ public class DoConverter extends FileConverter
             goAnnoItem.addCollection(goEvidenceColl);
         }
         goAnnoItem.setReference("subject", subject);
-        goAnnoItem.setReference("doTerm", ontologyTerm);
+        goAnnoItem.setReference("ontologyTerm", ontologyTerm);
         return goAnnoItem;
     }
 

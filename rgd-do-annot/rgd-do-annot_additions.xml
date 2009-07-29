@@ -1,13 +1,9 @@
 <?xml version="1.0"?>
 <classes>
-<class name="DOTerm" extends="OntologyTerm" is-interface="true">
-	<collection name="doAnnotations" referenced-type="DOAnnotation" reverse-reference="doTerm"/>
-</class>
 <class name="DOAnnotation" extends="OntologyAnnotation" is-interface="true">
   <attribute name="withText" type="java.lang.String"/>
   <collection name="doEvidenceCodes" referenced-type="DOEvidenceCode"/>
   <collection name="with" referenced-type="BioEntity"/>
-	<reference name="doTerm" referenced-type="DOTerm" reverse-reference="doAnnotations"/>
 </class>
 <class name="Gene" is-interface="true">
   <collection name="doAnnotation" referenced-type="DOAnnotation"/>

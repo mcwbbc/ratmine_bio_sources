@@ -1,16 +1,12 @@
 <?xml version="1.0"?>
 <classes>
-<class name="PWTerm" extends="OntologyTerm" is-interface="true">
-	<collection name="pwAnnotations" referenced-type="PWAnnotation" reverse-reference="pwTerm"/>
-</class>
 <class name="PWAnnotation" extends="OntologyAnnotation" is-interface="true">
   <attribute name="withText" type="java.lang.String"/>
   <collection name="pwEvidenceCodes" referenced-type="PWEvidenceCode"/>
   <collection name="with" referenced-type="BioEntity"/>
-	<reference name="pwTerm" referenced-type="PWTerm" reverse-reference="pwAnnotations"/>
 </class>
 <class name="Gene" is-interface="true">
-  <collection name="pwAnnotations" referenced-type="PWAnnotation"/>
+  <collection name="pwAnnotation" referenced-type="PWAnnotation"/>
 </class>
 <class name="PWEvidenceCode" is-interface="true">
   <attribute name="code" type="java.lang.String" />

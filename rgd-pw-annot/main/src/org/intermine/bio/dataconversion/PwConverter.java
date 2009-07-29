@@ -387,7 +387,7 @@ public class PwConverter extends FileConverter
             goAnnoItem.addCollection(goEvidenceColl);
         }
         goAnnoItem.setReference("subject", subject);
-        goAnnoItem.setReference("pwTerm", ontologyTerm);
+        goAnnoItem.setReference("ontologyTerm", ontologyTerm);
         return goAnnoItem;
     }
 

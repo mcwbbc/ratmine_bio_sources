@@ -387,7 +387,7 @@ public class MpConverter extends FileConverter
             goAnnoItem.addCollection(goEvidenceColl);
         }
         goAnnoItem.setReference("subject", subject);
-        goAnnoItem.setReference("mpTerm", ontologyTerm);
+        goAnnoItem.setReference("ontologyTerm", ontologyTerm);
         return goAnnoItem;
     }
 

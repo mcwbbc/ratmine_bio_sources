@@ -1,11 +1,5 @@
 <classes>
-	<class name="PharmGKB" is-interface="true">
-		<attribute name="primaryIdentifier" type="java.lang.String" />
-		<reference name="gene" referenced-type="Gene" reverse-reference="pharmgkbs" />
-	</class>
-	
 	<class name="Gene" is-interface="true">
-		<collection name="pharmgkbs" referenced-type="PharmGKB" rereverse-reference="gene" />
+		<attribute name="pharmGKBidentifier" type="java.lang.String" />
 	</class>
-	
 </classes>

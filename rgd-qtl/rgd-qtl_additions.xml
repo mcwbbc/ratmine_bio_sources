@@ -6,6 +6,7 @@
 		<attribute name="pValue" type="java.lang.Float" />
 		<attribute name="peakSymbol" type="java.lang.String" />
 		<attribute name="trait" type="java.lang.String" />
+		<collection name="candidateGenes" referenced-type="Gene" />
 	</class>
 	
 </classes>

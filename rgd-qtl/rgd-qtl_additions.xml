@@ -9,4 +9,8 @@
 		<collection name="candidateGenes" referenced-type="Gene" />
 	</class>
 	
+	<class name="Gene" is-interface="true">
+		<collection name="parentQTLs" referenced-type="Qtl" />
+	</class>
+	
 </classes>

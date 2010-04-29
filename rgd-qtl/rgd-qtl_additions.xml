@@ -7,10 +7,14 @@
 		<attribute name="peakSymbol" type="java.lang.String" />
 		<attribute name="trait" type="java.lang.String" />
 		<collection name="candidateGenes" referenced-type="Gene" reverse-reference="parentQTLs" />
+		<collection name="strains" referenced-type="Strain" reverse-reference="qtls" />
 	</class>
 	
 	<class name="Gene" is-interface="true">
 		<collection name="parentQTLs" referenced-type="Qtl" reverse-reference="candidateGenes" />
 	</class>
 	
+	<class name="Strain" is-interface="true">
+		<collection name="qtls" referenced-type="Qtl" reverse-reference="strains" />
+	</class>
 </classes>

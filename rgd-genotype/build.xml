@@ -1,0 +1,5 @@
+<project name="rgd-genotype" default="default" basedir=".">
+  <description>build, test, package rgd-genotype</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

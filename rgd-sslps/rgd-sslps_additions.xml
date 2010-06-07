@@ -5,6 +5,7 @@
 <!-- add any <class> elements here -->
 	<class name="SSLP" is-interface="true" extends="Substitution">
 		<attribute name="expectedSize" type="java.lang.String" />
+		<attribute name="symbol" type="java.lang.String"/>
 	</class>
    
 </classes>

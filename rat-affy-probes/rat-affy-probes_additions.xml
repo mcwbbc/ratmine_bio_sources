@@ -3,19 +3,21 @@
 
 <classes>
 	<class name="ProbeSet" extends="LocatedSequenceFeature" is-interface="true">
-		<collection name="genes" referenced-type="Gene" reverse-reference="probeSets"/>
 		<collection name="locations" referenced-type="Location" />
-		<reference name="array" referened-type="Array" reverse-reference="probeSets"/>
+		<collection name="arrays" referenced-type="Array" reverse-reference="probeSets"/>
+		<collection name="genes" referenced-type="Gene" reverse-reference="probeSets"/>
+	</class>
+
+
+	<class name="Array" is-interface="true">
+		<attribute name="primaryIdentifier" type="java.lang.String"/>
+		<attribute name="vendor" type="java.lang.String"/>
+		<collection name="probeSets" referenced-type="ProbeSet" reverse-reference="arrays"/>
+		<reference name="organism" referenced-type="Organism"/>
 	</class>
 	
 	<class name="Gene" is-interface="true">
 		<collection name="probeSets" referenced-type="ProbeSet" reverse-reference="genes"/>
-	</class>
-	
-	<class name="Array" is-interface="true">
-		<attribute name="primaryIdentifier" type="java.lang.String"/>
-		<attribute name="vendor" type="java.lang.String"/>
-		<collection name="probeSets" referenced-type="ProbeSet" reverse-reference="array"/>
 	</class>
 	
 </classes>

@@ -6,6 +6,7 @@
 		<collection name="locations" referenced-type="Location" />
 		<collection name="arrays" referenced-type="Array" reverse-reference="probeSets"/>
 		<collection name="genes" referenced-type="Gene" reverse-reference="probeSets"/>
+		<collection name="sequences" referenced-type="Sequence"/>
 	</class>
 
 

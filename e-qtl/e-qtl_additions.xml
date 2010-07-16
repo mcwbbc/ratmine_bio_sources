@@ -2,6 +2,28 @@
 <!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
 
 <classes>
-<!-- add any <class> elements here -->
-
+	<class name="Experiment" is-interface="true">
+		<collection name="dataPoints" referenced-type="DataPoint" reverse-reference="experiment"/>
+	</class>
+	
+	<class name="DataPoint" is-interface="true">
+		
+	</class>
+	
+	<class name="eQTL" extends="DataPoint" is-interface="true">
+		<attribute name="reaperPValue" type="java.lang.Float"/>
+		<reference name="experiment" referenced-type="Experiment" reverse-reference="dataPoints"/>
+		<reference name="sslp" referenced-type="SSLP"/>
+		<reference name="probeSet" referenced-type="ProbeSet"/>
+		<collection name="tissueExpressions" referenced-type="Expression"/>
+	</class>
+	
+	<class name="Expression" is-interface="true">
+		<attribute name="tissue" type="java.lang.String"/>
+		<attribute name="foldChange" type="java.lang.Float"/>
+		<attribute name="pval" type="java.lang.Float"/>
+		<reference name="eqtl" referenced-type="eQTL" reverse-reference="tissueExpressions"/>
+	</class>
+	
+	
 </classes>

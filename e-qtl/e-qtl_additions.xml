@@ -7,7 +7,7 @@
 	</class>
 	
 	<class name="DataPoint" is-interface="true">
-		
+		<reference name="experiment" referenced-type="Experiment" reverse-reference="dataPoints"/>
 	</class>
 	
 	<class name="eQTL" extends="DataPoint" is-interface="true">

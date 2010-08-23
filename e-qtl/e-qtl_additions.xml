@@ -26,5 +26,13 @@
 		<reference name="eqtl" referenced-type="eQTL" reverse-reference="tissueExpressions"/>
 	</class>
 	
+	<class name="ProbeSet" is-interface="true">
+		<collection name="eqtls" referenced-type="eQTL" reverse-reference="probeSet"/>
+	</class>
+	
+	<class name="SSLP" is-interface="true">
+		<collection name="eqtls" referenced-type="eQTL" reverse-reference="sslp"/>
+	</class>
+	
 	
 </classes>

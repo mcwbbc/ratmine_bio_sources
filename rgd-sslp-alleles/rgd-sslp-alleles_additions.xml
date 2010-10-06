@@ -3,12 +3,12 @@
 
 <classes>
 	<class name="SSLP" is-interface="true" extends="SequenceFeature">
-		<collection name="sslpAlleles" referenced-type="SSLPAllele" reverse-reference="sslp"/>
+		<collection name="alleles" referenced-type="Allele" reverse-reference="sslp"/>
 	</class>
 	
-	<class name="SSLPAllele" is-interface="true">
+	<class name="Allele" is-interface="true">
 		<attribute name="length" type="java.lang.String"/>
 		<reference name="strain" referenced-type="Strain" />
-		<reference name="sslp" referenced-type="SSLP" reverse-reference="sslpAlleles"/>
+		<reference name="sslp" referenced-type="SSLP" reverse-reference="alleles"/>
 	</class>
 </classes>

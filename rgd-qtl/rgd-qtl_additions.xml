@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <classes>
-	<class name="Qtl" extends="SequenceFeature" is-interface="true" >
+	<class name="QTL" extends="SequenceFeature" is-interface="true" >
 		<attribute name="symbol" type="java.lang.String" />
 		<attribute name="lod" type="java.lang.Float" />
 		<attribute name="pValue" type="java.lang.Float" />
@@ -11,10 +11,10 @@
 	</class>
 	
 	<class name="Gene" is-interface="true">
-		<collection name="parentQTLs" referenced-type="Qtl" reverse-reference="candidateGenes" />
+		<collection name="parentQTLs" referenced-type="QTL" reverse-reference="candidateGenes" />
 	</class>
 	
 	<class name="Strain" is-interface="true">
-		<collection name="qtls" referenced-type="Qtl" reverse-reference="strains" />
+		<collection name="qtls" referenced-type="QTL" reverse-reference="strains" />
 	</class>
 </classes>

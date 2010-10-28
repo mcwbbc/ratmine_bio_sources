@@ -2,13 +2,13 @@
 <!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
 
 <classes>
-	<class name="SSLP" is-interface="true" extends="SequenceFeature">
-		<collection name="alleles" referenced-type="Allele" reverse-reference="sslp"/>
+	<class name="SimpleSequenceLengthVariation" is-interface="true" extends="SequenceFeature">
+		<collection name="alleles" referenced-type="Allele" reverse-reference="sslv"/>
 	</class>
 	
 	<class name="Allele" is-interface="true">
 		<attribute name="length" type="java.lang.String"/>
 		<reference name="strain" referenced-type="Strain" />
-		<reference name="sslp" referenced-type="SSLP" reverse-reference="alleles"/>
+		<reference name="sslv" referenced-type="SimpleSequenceLengthVariation" reverse-reference="alleles"/>
 	</class>
 </classes>

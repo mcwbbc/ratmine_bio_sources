@@ -3,7 +3,7 @@
 
 <classes>
 <!-- add any <class> elements here -->
-	<class name="SSLP" is-interface="true" extends="SequenceFeature">
+	<class name="SimpleSequenceLengthVariation" is-interface="true" extends="SequenceFeature">
 		<attribute name="expectedSize" type="java.lang.String" />
 		<attribute name="symbol" type="java.lang.String"/>
 	</class>

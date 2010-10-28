@@ -41,12 +41,12 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
      */
     public void process(GFF3Record record) {
         Item feature = getFeature();
-		String clsName = XmlUtil.getFragmentFromURI(feature.getClassName());
+		/*String clsName = XmlUtil.getFragmentFromURI(feature.getClassName());
 		if("Exon".equals(clsName)){
 			Map refMap = new HashMap();
 			refMap.put("Exon","gene");
-			setReferences(refMap);
-		}
+			feature.setCollection(refMap);
+		}*/ 
     }
     
 }

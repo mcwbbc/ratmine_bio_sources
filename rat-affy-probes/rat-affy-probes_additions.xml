@@ -5,7 +5,11 @@
 	<class name="Probe" extends="SequenceFeature" is-interface="true">
 		<collection name="arrays" referenced-type="Array" reverse-reference="probeSet"/>
 		<collection name="genes" referenced-type="Gene" reverse-reference="probes"/>
-		<collection name="sequences" referenced-type="Sequence"/>
+		<collection name="sequences" referenced-type="Sequence" reverse-reference="probe"/>
+	</class>
+	
+	<class name="Sequence" is-interface="true">
+		<reference name="probe" referenced-type="Probe" reverse-reference="sequences"/>
 	</class>
 
 

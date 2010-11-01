@@ -534,7 +534,7 @@ public class PwConverter extends FileConverter
         if (dataSetIdentifier == null) {
             String title = "PW Annotation from " + getDataSourceName(code);
             Item item = createItem("DataSet");
-            item.setAttribute("title", title);
+            item.setAttribute("name", title);
             item.setReference("dataSource", getDataSource(code));
             dataSetIdentifier = item.getIdentifier();
             dataSets.put(code, dataSetIdentifier);

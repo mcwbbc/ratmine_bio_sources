@@ -434,14 +434,14 @@ public class PwConverter extends FileConverter
         Integer storedProductId = store(product);
         storedProductIds.put(product.getIdentifier(), storedProductId);
         productMap.put(key, product.getIdentifier());
-
+/*
         Item synonym = newSynonym(
                 product.getIdentifier(),
                 synonymTypes.get(type),
                 accession,
                 dataSetIdentifier);
         store(synonym);
-        
+*/        
         return product.getIdentifier();
     }
 
@@ -587,7 +587,6 @@ public class PwConverter extends FileConverter
     private Item newSynonym(String subjectId, String type, String value, String datasetId) {
         Item synonym = createItem("Synonym");
         synonym.setReference("subject", subjectId);
-        synonym.setAttribute("type", type);
         synonym.setAttribute("value", value);
         synonym.addToCollection("dataSets", datasetId);
         return synonym;

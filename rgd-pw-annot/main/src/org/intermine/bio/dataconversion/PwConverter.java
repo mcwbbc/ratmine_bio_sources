@@ -587,7 +587,6 @@ public class PwConverter extends FileConverter
     private Item newSynonym(String subjectId, String type, String value, String datasetId) {
         Item synonym = createItem("Synonym");
         synonym.setReference("subject", subjectId);
-        synonym.setAttribute("type", type);
         synonym.setAttribute("value", value);
         synonym.addToCollection("dataSets", datasetId);
         return synonym;

@@ -434,14 +434,14 @@ public class PwConverter extends FileConverter
         Integer storedProductId = store(product);
         storedProductIds.put(product.getIdentifier(), storedProductId);
         productMap.put(key, product.getIdentifier());
-
+/*
         Item synonym = newSynonym(
                 product.getIdentifier(),
                 synonymTypes.get(type),
                 accession,
                 dataSetIdentifier);
         store(synonym);
-        
+*/        
         return product.getIdentifier();
     }
 

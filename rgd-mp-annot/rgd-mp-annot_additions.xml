@@ -10,5 +10,6 @@
 </class>
 <class name="MPEvidenceCode" is-interface="true">
   <attribute name="code" type="java.lang.String" />
+  <collection name="publications" referenced-type="Publication"/>
 </class>
 </classes>

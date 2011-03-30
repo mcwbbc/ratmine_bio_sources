@@ -9,7 +9,8 @@
   <collection name="doAnnotation" referenced-type="DOAnnotation"/>
 </class>
 <class name="DOEvidence" is-interface="true">
-  <reference name="code" referenced-type="GOEvidenceCode" />
+  <reference name="code" referenced-type="DOEvidenceCode" />
   <collection name="publications" referenced-type="Publication"/>
 </class>
+<class name="DOEvidenceCode" extends="GOEvidenceCode" is-interface="true"/>
 </classes>

@@ -524,7 +524,7 @@ public class DoConverter extends BioFileConverter
 
     private void storeEvidenceCode(String code) throws ObjectStoreException {
         if (evidenceCodes.get(code) == null) {
-            Item item = createItem("GOEvidenceCode");
+            Item item = createItem("DOEvidenceCode");
             item.setAttribute("code", code);
             evidenceCodes.put(code, item.getIdentifier());
             store(item);

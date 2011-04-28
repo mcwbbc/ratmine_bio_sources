@@ -12,7 +12,6 @@ package org.intermine.bio.dataconversion;
 
 import org.intermine.metadata.Model;
 import org.intermine.xml.full.Item;
-import org.intermine.util.XmlUtil;
 import java.util.regex.*;
 import java.util.Map;
 import java.util.HashMap;
@@ -26,12 +25,15 @@ import org.intermine.bio.io.gff3.GFF3Record;
  * @modified by Andrew Vallejos
  */
 
+
 public class RgdGFF3RecordHandler extends GFF3RecordHandler
 {
     /**
      * Create a new RgdGFF3RecordHandler object.
      * @param tgtModel the target Model
      */
+	private static Map<String, Integer> iDMap = new HashMap<String, Integer>();
+	
     public RgdGFF3RecordHandler(Model tgtModel) {
 		super(tgtModel);        
     }
@@ -40,13 +42,26 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
      * {@inheritDoc}
      */
     public void process(GFF3Record record) {
+		
         Item feature = getFeature();
-		/*String clsName = XmlUtil.getFragmentFromURI(feature.getClassName());
-		if("Exon".equals(clsName)){
-			Map refMap = new HashMap();
-			refMap.put("Exon","gene");
-			feature.setCollection(refMap);
-		}*/ 
+
+		String clsName = feature.getClassName();
+		if(feature.getAttribute("primaryIdentifier") == null)
+			return;
+			
+		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
+		
+		if(iDMap.containsKey(ftrName)){
+			iDMap.put(ftrName, iDMap.get(ftrName) + 1);
+			feature.setAttribute("primaryIdentifier", 
+				ftrName + ":" + iDMap.get(ftrName));
+		}
+		else{
+			iDMap.put(ftrName, 1);
+			System.out.println("Adding 1 to " + ftrName);
+		}
+		System.out.println(ftrName + "is now" + iDMap.get(ftrName));
+		System.out.println("Size of map: " + iDMap.size());
     }
     
 }

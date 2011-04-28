@@ -1,4 +1,4 @@
-<project name="rgd-do-ont" default="default" basedir=".">
+<project name="mgi-maga-ont" default="default" basedir=".">
   <description>build, test, package go</description>
   
   <import file="../../../imbuild/source.xml"/>

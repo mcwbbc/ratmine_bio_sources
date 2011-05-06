@@ -15,6 +15,7 @@ import org.intermine.xml.full.Item;
 import java.util.regex.*;
 import java.util.Map;
 import java.util.HashMap;
+import java.io.IOException;
 
 import org.intermine.bio.io.gff3.GFF3Record;
 
@@ -35,17 +36,39 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 	private static Map<String, Integer> iDMap = new HashMap<String, Integer>();
 	
     public RgdGFF3RecordHandler(Model tgtModel) {
-		super(tgtModel);        
+		super(tgtModel);
     }
 
     /**
      * {@inheritDoc}
      */
     public void process(GFF3Record record) {
+		/*
+		String recId = record.getId();
+		if(recId == null)
+			return;
 		
+		if(iDMap.containsKey(recId)){
+			iDMap.put(recId, iDMap.get(recId) + 1);
+			record.setId(recId + ":" + iDMap.get(recId));
+		}
+		else{
+			iDMap.put(recId, 1);
+			System.out.println("Adding 1 to " + recId);
+			System.out.println(record.getAttributes());
+		}
+		System.out.println(recId + "is now " + iDMap.get(recId));
+		
+		try{
+			System.in.read();
+		}
+		catch(IOException e)
+		{}
+		
+		/*
         Item feature = getFeature();
 
-		String clsName = feature.getClassName();
+		// String clsName = feature.getClassName();
 		if(feature.getAttribute("primaryIdentifier") == null)
 			return;
 			
@@ -62,6 +85,7 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 		}
 		System.out.println(ftrName + "is now" + iDMap.get(ftrName));
 		System.out.println("Size of map: " + iDMap.size());
+		*/
     }
     
 }

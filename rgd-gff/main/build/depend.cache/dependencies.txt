@@ -1,11 +1,12 @@
 ||:org.intermine.bio.dataconversion.RgdGFF3RecordHandler
 java.lang.StringBuilder
 org.intermine.bio.dataconversion.RgdGFF3RecordHandler
-org.intermine.xml.full.Item
-org.intermine.xml.full.Attribute
 org.intermine.bio.dataconversion.GFF3RecordHandler
+java.io.InputStream
 java.io.PrintStream
 java.lang.System
-java.util.Map
 java.util.HashMap
+java.util.Map
+org.intermine.bio.io.gff3.GFF3Record
+java.io.IOException
 java.lang.Integer

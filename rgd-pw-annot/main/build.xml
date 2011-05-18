@@ -1,4 +1,4 @@
-<project name="go-annotation-tasks" default="default" basedir=".">
-  <description>build go-annotation tasks</description>
+<project name="rgd-pw-annotation-tasks" default="default" basedir=".">
+  <description>build rgd-pw-annotation tasks</description>
   <import file="../../../../imbuild/library.xml"/> 
 </project>

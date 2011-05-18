@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<classes>
+	<class name="Exon" is-interface="true">
+		<reference name="mRNA" referenced-type="MRNA" />
+	</class>
+	
+	<class name="CDS" is-interface="true">
+		<reference name="mRNA" referenced-type="MRNA" />
+	</class>
+	
+</classes>

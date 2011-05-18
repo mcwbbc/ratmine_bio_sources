@@ -33,16 +33,34 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
      * Create a new RgdGFF3RecordHandler object.
      * @param tgtModel the target Model
      */
-	private static Map<String, Integer> iDMap = new HashMap<String, Integer>();
 	
     public RgdGFF3RecordHandler(Model tgtModel) {
 		super(tgtModel);
+		 // create a map of classname to reference name for parent references
+        refsAndCollections = new HashMap<String, String>();
+        refsAndCollections.put("Exon", "mRNA");
+        refsAndCollections.put("CDS", "mRNA");
+		refsAndCollections.put("MRNA", "gene");
     }
 
     /**
      * {@inheritDoc}
      */
     public void process(GFF3Record record) {
+	
+		Item feature = getFeature();
+		
+		if(feature.getAttribute("primaryIdentifier") == null)
+			return;
+			
+		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
+		
+		Matcher matcher = Pattern.compile("RGD").matcher(ftrName);
+		
+		String newName = matcher.replaceAll("");
+		
+		feature.setAttribute("primaryIdentifier", newName);
+		
 		/*
 		String recId = record.getId();
 		if(recId == null)
@@ -64,16 +82,9 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 		}
 		catch(IOException e)
 		{}
-		
-		/*
-        Item feature = getFeature();
 
 		// String clsName = feature.getClassName();
-		if(feature.getAttribute("primaryIdentifier") == null)
-			return;
-			
-		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
-		
+					
 		if(iDMap.containsKey(ftrName)){
 			iDMap.put(ftrName, iDMap.get(ftrName) + 1);
 			feature.setAttribute("primaryIdentifier", 

@@ -1,5 +1,5 @@
-<project name="go" default="default" basedir=".">
-  <description>build, test, package go</description>
+<project name="do-ont" default="default" basedir=".">
+  <description>build, test, package do-ont</description>
   
   <import file="../../../imbuild/source.xml"/>
   

@@ -1,5 +1,5 @@
-<project name="go-annotation" default="default" basedir=".">
-  <description>build, test, package go-annotation</description>
+<project name="rgd-do-annotation" default="default" basedir=".">
+  <description>build, test, package do-annotation</description>
   
   <import file="../../../imbuild/source.xml"/>
   

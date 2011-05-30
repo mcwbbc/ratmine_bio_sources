@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<classes>
+	
+	<class name="GEODataSet" is-interface="true">
+	  <collection name="maAnnotation" referenced-type="MAAnnotation"/>
+		<collection name="clAnnotation" referenced-type="CLAnnotation"/>
+		<collection name="rsAnnotation" referenced-type="RSAnnotation"/>
+	</class>
+	
+	<class name="MAAnnotation" extends="OntologyAnnotation" is-interface="true">
+	  <attribute name="withText" type="java.lang.String"/>
+	  <collection name="evidence" referenced-type="DOEvidence"/>
+	  <collection name="with" referenced-type="BioEntity"/>
+	</class>
+
+	<class name="MAEvidence" is-interface="true">
+	  <reference name="code" referenced-type="DOEvidenceCode" />
+	  <collection name="publications" referenced-type="Publication"/>
+	</class>
+
+	<class name="MAEvidenceCode" extends="GOEvidenceCode" is-interface="true"/>
+
+	<class name="CLAnnotation" extends="OntologyAnnotation" is-interface="true">
+	  <attribute name="withText" type="java.lang.String"/>
+	  <collection name="evidence" referenced-type="DOEvidence"/>
+	  <collection name="with" referenced-type="BioEntity"/>
+	</class>
+
+	<class name="CLEvidence" is-interface="true">
+	  <reference name="code" referenced-type="CLEvidenceCode" />
+	  <collection name="publications" referenced-type="Publication"/>
+	</class>
+	
+	<class name="CLEvidenceCode" extends="GOEvidenceCode" is-interface="true"/>
+
+	<class name="RSAnnotation" extends="OntologyAnnotation" is-interface="true">
+	  <attribute name="withText" type="java.lang.String"/>
+	  <collection name="evidence" referenced-type="DOEvidence"/>
+	  <collection name="with" referenced-type="BioEntity"/>
+	</class>
+
+	<class name="RSEvidence" is-interface="true">
+	  <reference name="code" referenced-type="CLEvidenceCode" />
+	  <collection name="publications" referenced-type="Publication"/>
+	</class>
+	
+	<class name="RSEvidenceCode" extends="GOEvidenceCode" is-interface="true"/>
+	
+</classes>

@@ -2,15 +2,16 @@
 <classes>
 	
 	<class name="GEODataSet" is-interface="true">
-	  <collection name="maAnnotation" referenced-type="MAAnnotation"/>
-		<collection name="clAnnotation" referenced-type="CLAnnotation"/>
-		<collection name="rsAnnotation" referenced-type="RSAnnotation"/>
+	  <collection name="maAnnotation" referenced-type="MAAnnotation"  reverse-reference="subjectDataSet"/>
+		<collection name="clAnnotation" referenced-type="CLAnnotation" reverse-reference="subjectDataSet"/>
+		<collection name="rsAnnotation" referenced-type="RSAnnotation" reverse-reference="subjectDataSet"/>
 	</class>
 	
 	<class name="MAAnnotation" extends="OntologyAnnotation" is-interface="true">
 	  <attribute name="withText" type="java.lang.String"/>
 	  <collection name="evidence" referenced-type="DOEvidence"/>
 	  <collection name="with" referenced-type="BioEntity"/>
+	  <reference name="subjectDataSet" referenced-type="GEODataSet" reverse-reference="maAnnotation"/>
 	</class>
 
 	<class name="MAEvidence" is-interface="true">
@@ -24,6 +25,7 @@
 	  <attribute name="withText" type="java.lang.String"/>
 	  <collection name="evidence" referenced-type="DOEvidence"/>
 	  <collection name="with" referenced-type="BioEntity"/>
+	  <reference name="subjectDataSet" referenced-type="GEODataSet" reverse-reference="clAnnotation"/>
 	</class>
 
 	<class name="CLEvidence" is-interface="true">
@@ -37,6 +39,7 @@
 	  <attribute name="withText" type="java.lang.String"/>
 	  <collection name="evidence" referenced-type="DOEvidence"/>
 	  <collection name="with" referenced-type="BioEntity"/>
+	  <reference name="subjectDataSet" referenced-type="GEODataSet" reverse-reference="rsAnnotation"/>
 	</class>
 
 	<class name="RSEvidence" is-interface="true">

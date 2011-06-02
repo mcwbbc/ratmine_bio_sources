@@ -38,8 +38,8 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 		super(tgtModel);
 		 // create a map of classname to reference name for parent references
         refsAndCollections = new HashMap<String, String>();
-        refsAndCollections.put("Exon", "mRNA");
-        refsAndCollections.put("CDS", "mRNA");
+        refsAndCollections.put("Exon", "gene");
+        refsAndCollections.put("CDS", "transcript");
 		refsAndCollections.put("MRNA", "gene");
     }
 

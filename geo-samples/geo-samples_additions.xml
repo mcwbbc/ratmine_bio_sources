@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+	
+	<class name="Array" is-interface="true">
+		<attribute name="name" type="java.lang.String"/>
+		<collection name="samples" referenced-type="GEOSample" reverse-reference="platform"/>
+	</class>
+	
+	<class name="GEOSample" extends="GEORecord" is-interface="true">
+		<reference name="platform" referenced-type="Array" reverse-reference="samples"/>
+	</class>
+	
+</classes>

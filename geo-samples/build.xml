@@ -1,0 +1,5 @@
+<project name="geo-samples" default="default" basedir=".">
+  <description>build, test, package geo-samples</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

@@ -12,5 +12,12 @@
 		<attribute name="valueType" type="java.lang.String"/>
 		<reference name="publication" referenced-type="Publication"/>
 		<reference name="organism" referenced-type="Organism"/>
+		<reference name="platform" referenced-type="Array" reverse-reference="geoDatasets"/>
 	</class>
+	
+	<class name="Array" is-interface="true">
+		<attribute name="name" type="java.lang.String"/>
+		<collection name="geoDatasets" referenced-type="GEODataSet" reverse-reference="platform"/>
+	</class>
+	
 </classes>

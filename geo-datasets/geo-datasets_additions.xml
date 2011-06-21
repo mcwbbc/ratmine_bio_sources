@@ -4,20 +4,20 @@
 <classes>
 	<class name="GEORecord" extends="DataSet" is-interface="true">
 		<attribute name="geoAccession" type="java.lang.String"/>
+		<attribute name="title" type="java.lang.String"/>
+		<attribute name="type" type="java.lang.String"/>
+		<collection name="publications" referenced-type="Publication"/>
+		<collection name="platforms" referenced-type="Array" reverse-reference="geoRecords"/>
+		<reference name="organism" referenced-type="Organism"/>
 	</class>
 	
 	<class name="GEODataSet" extends="GEORecord" is-interface="true">
-		<attribute name="title" type="java.lang.String"/>
-		<attribute name="type" type="java.lang.String"/>
 		<attribute name="valueType" type="java.lang.String"/>
-		<reference name="publication" referenced-type="Publication"/>
-		<reference name="organism" referenced-type="Organism"/>
-		<reference name="platform" referenced-type="Array" reverse-reference="geoDatasets"/>
 	</class>
 	
 	<class name="Array" is-interface="true">
 		<attribute name="name" type="java.lang.String"/>
-		<collection name="geoDatasets" referenced-type="GEODataSet" reverse-reference="platform"/>
+		<collection name="geoRecords" referenced-type="GEORecord" reverse-reference="platforms"/>
 	</class>
 	
 </classes>

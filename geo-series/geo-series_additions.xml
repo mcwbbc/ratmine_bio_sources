@@ -2,10 +2,13 @@
 <!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
 
 <classes>
+<!-- add any <class> elements here -->
 	
-	
-	<class name="GEOSample" extends="GEORecord" is-interface="true">
+	<class name="GEOSeries" extends="GEORecord" is-interface="true">
+		
 	</class>
 	
-	
+	<class name="Array" is-interface="true">
+		<attribute name="geoAccession" type="java.lang.String"/>
+	</class>
 </classes>

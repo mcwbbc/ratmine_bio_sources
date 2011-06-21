@@ -1,0 +1,5 @@
+<project name="geo-series" default="default" basedir=".">
+  <description>build, test, package geo-series</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

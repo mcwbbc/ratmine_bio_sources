@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <classes>
 	
-	<class name="GEODataSet" is-interface="true">
+	<class name="GEORecord" is-interface="true">
 	  <collection name="maAnnotation" referenced-type="MAAnnotation"  reverse-reference="subjectDataSet"/>
 		<collection name="clAnnotation" referenced-type="CLAnnotation" reverse-reference="subjectDataSet"/>
 		<collection name="rsAnnotation" referenced-type="RSAnnotation" reverse-reference="subjectDataSet"/>
@@ -11,7 +11,7 @@
 	  <attribute name="withText" type="java.lang.String"/>
 	  <collection name="evidence" referenced-type="DOEvidence"/>
 	  <collection name="with" referenced-type="BioEntity"/>
-	  <reference name="subjectDataSet" referenced-type="GEODataSet" reverse-reference="maAnnotation"/>
+	  <reference name="subjectDataSet" referenced-type="GEORecord" reverse-reference="maAnnotation"/>
 	</class>
 
 	<class name="MAEvidence" is-interface="true">
@@ -25,7 +25,7 @@
 	  <attribute name="withText" type="java.lang.String"/>
 	  <collection name="evidence" referenced-type="DOEvidence"/>
 	  <collection name="with" referenced-type="BioEntity"/>
-	  <reference name="subjectDataSet" referenced-type="GEODataSet" reverse-reference="clAnnotation"/>
+	  <reference name="subjectDataSet" referenced-type="GEORecord" reverse-reference="clAnnotation"/>
 	</class>
 
 	<class name="CLEvidence" is-interface="true">
@@ -39,7 +39,7 @@
 	  <attribute name="withText" type="java.lang.String"/>
 	  <collection name="evidence" referenced-type="DOEvidence"/>
 	  <collection name="with" referenced-type="BioEntity"/>
-	  <reference name="subjectDataSet" referenced-type="GEODataSet" reverse-reference="rsAnnotation"/>
+	  <reference name="subjectDataSet" referenced-type="GEORecord" reverse-reference="rsAnnotation"/>
 	</class>
 
 	<class name="RSEvidence" is-interface="true">

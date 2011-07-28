@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+
+<classes>
+	<class name="PolyPhen" is-interface="true">
+		<attribute name="primaryIdentifier" type="java.lang.String"/>
+		<attribute name="aminoAcidPosition" type="java.lang.String"/>
+		<attribute name="alleleOne" type="java.lang.String"/>
+		<attribute name="alleleTwo" type="java.lang.String"/>
+		<attribute name="prediction" type="java.lang.String"/>
+		<attribute name="basis" type="java.lang.String"/>
+
+		<reference name="protein" referenced-type="Protein"/>
+		<reference name="variantTranscript" referenced-type="Transcript"/>
+	</class>
+
+</classes>

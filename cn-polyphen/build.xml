@@ -1,0 +1,5 @@
+<project name="cn-polyphen" default="default" basedir=".">
+  <description>build, test, package cn-polyphen</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

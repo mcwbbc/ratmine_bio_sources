@@ -2,26 +2,26 @@
 <!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
 
 <classes>
-	<class name="Probe" extends="SequenceFeature" is-interface="true">
+	<class name="ProbeSet" extends="SequenceFeature" is-interface="true">
 		<collection name="arrays" referenced-type="Array" reverse-reference="probeSet"/>
-		<collection name="genes" referenced-type="Gene" reverse-reference="probes"/>
-		<collection name="sequences" referenced-type="Sequence" reverse-reference="probe"/>
+		<collection name="genes" referenced-type="Gene" reverse-reference="probeSets"/>
+		<collection name="sequences" referenced-type="Sequence" reverse-reference="probeSet"/>
 	</class>
 	
 	<class name="Sequence" is-interface="true">
-		<reference name="probe" referenced-type="Probe" reverse-reference="sequences"/>
+		<reference name="probeSet" referenced-type="ProbeSet" reverse-reference="sequences"/>
 	</class>
 
 
 	<class name="Array" is-interface="true">
 		<attribute name="primaryIdentifier" type="java.lang.String"/>
 		<attribute name="vendor" type="java.lang.String"/>
-		<collection name="probeSet" referenced-type="Probe" reverse-reference="arrays"/>
+		<collection name="probeSet" referenced-type="ProbeSet" reverse-reference="arrays"/>
 		<reference name="organism" referenced-type="Organism"/>
 	</class>
 	
 	<class name="Gene" is-interface="true">
-		<collection name="probes" referenced-type="Probe" reverse-reference="genes"/>
+		<collection name="probeSets" referenced-type="ProbeSet" reverse-reference="genes"/>
 	</class>
 	
 </classes>

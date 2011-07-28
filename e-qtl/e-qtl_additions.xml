@@ -14,7 +14,7 @@
 		<attribute name="reaperPValue" type="java.lang.Float"/>
 		<reference name="submission" referenced-type="Submission" reverse-reference="dataPoints"/>
 		<reference name="sslv" referenced-type="SimpleSequenceLengthVariation"/>
-		<reference name="probe" referenced-type="Probe"/>
+		<reference name="probeSet" referenced-type="ProbeSet"/>
 		<collection name="tissueExpressions" referenced-type="Expression"/>
 		<reference name="organism" referenced-type="Organism"/>
 	</class>
@@ -26,8 +26,8 @@
 		<reference name="eqtl" referenced-type="eQTL" reverse-reference="tissueExpressions"/>
 	</class>
 	
-	<class name="Probe" is-interface="true">
-		<collection name="eqtls" referenced-type="eQTL" reverse-reference="probe"/>
+	<class name="ProbeSet" extends="SequenceCollection" is-interface="true">
+		<collection name="eqtls" referenced-type="eQTL" reverse-reference="probeSet"/>
 	</class>
 	
 	<class name="SimpleSequenceLengthVariation" is-interface="true">

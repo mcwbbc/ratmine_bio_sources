@@ -9,8 +9,18 @@
 		<attribute name="source" type="java.lang.String"/>
 		<attribute name="status" type="java.lang.String"/>
 		<collection name="geoSeries" referenced-type="GEOSeries"/>
+		<collection name="sampleCalls" referenced-type="SampleCall" reverse-reference="geoSample"/>
 	</class>
-	
+		
+	<class name="SampleCall" is-interface="true">
+		<attribute name="call" type="java.lang.String"/>		
+		<reference name="probeSet" referenced-type="ProbeSet"/>
+		<reference name="geoSample" referenced-type="GEOSample"/>
+	</class>
+
+	<class name="ProbeSet" is-interface="true">
+		<collection name="sampleCalls" referenced-type="SampleCall" reverse-reference="probeSet"/>
+	</class>
 	
 </classes>
 

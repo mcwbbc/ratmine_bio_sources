@@ -12,7 +12,16 @@
 
 		<reference name="protein" referenced-type="Protein"/>
 		<reference name="variantTranscript" referenced-type="Transcript"/>
-		<reference name="snp" referenced-type="SNP"/>
+		<reference name="snp" referenced-type="SNP" reverse-reference="polyPhen"/>
+	</class>
+
+	<class name="SNP" is-interface="true">
+		<reference name="polyPhen" referenced-type="PolyPhen" reverse-reference="snp"/>
+		<reference name="sample" referenced-type="Experiment" reverse-reference="snps"/>
+	</class>
+
+	<class name="Experiment" is-interface="true">
+		<collection name="snps" referenced-type="SNP" reverse-reference="sample"/>
 	</class>
 
 </classes>

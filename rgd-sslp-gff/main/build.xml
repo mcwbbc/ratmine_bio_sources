@@ -1,4 +1,0 @@
-<project name="rgd-sslp-gff-tasks" default="default" basedir=".">
-  <description>build rgd-sslp-gff tasks</description>
-  <import file="../../../../imbuild/library.xml"/> 
-</project>

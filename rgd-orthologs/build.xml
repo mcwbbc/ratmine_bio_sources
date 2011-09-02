@@ -1,0 +1,5 @@
+<project name="rgd-orthologs" default="default" basedir=".">
+  <description>build, test, package rgd-orthologs</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

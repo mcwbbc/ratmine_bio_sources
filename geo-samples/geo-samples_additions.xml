@@ -8,8 +8,12 @@
 		<attribute name="molecule" type="java.lang.String"/>
 		<attribute name="source" type="java.lang.String"/>
 		<attribute name="status" type="java.lang.String"/>
-		<collection name="geoSeries" referenced-type="GEOSeries"/>
+		<collection name="geoSeries" referenced-type="GEOSeries" reverse-reference="geoSamples"/>
 		<collection name="sampleCalls" referenced-type="SampleCall" reverse-reference="geoSample"/>
+	</class>
+
+	<class name="GEOSeries" is-interface="true">
+		<collection name="geoSamples" referenced-type="GEOSample" reverse-reference="geoSeries"/>
 	</class>
 		
 	<class name="SampleCall" is-interface="true">

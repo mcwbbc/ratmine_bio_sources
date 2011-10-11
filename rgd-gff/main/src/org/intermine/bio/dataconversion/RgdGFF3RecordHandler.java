@@ -41,26 +41,73 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
         refsAndCollections.put("Exon", "gene");
         refsAndCollections.put("CDS", "transcript");
 		refsAndCollections.put("MRNA", "gene");
+		
+		//Map<String, Item> featuresMap = new HashMap<String, Item>();
     }
+
+	Map<String, Item> featuresMap = new HashMap<String, Item>();
 
     /**
      * {@inheritDoc}
      */
+
+     public void process(GFF3Record record) {
+
+		Item feature = getFeature();
+
+		if(feature.getAttribute("primaryIdentifier") == null) {
+			return;
+		}
+		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
+		Matcher matcher = Pattern.compile("RGD").matcher(ftrName);
+		String newName = matcher.replaceAll("");
+
+		if (featuresMap.get(newName) == null) {
+		    // new feature
+			featuresMap.put(newName, feature);
+		} else {
+		    // we've already seen this feature
+
+            // remove the current duplicate feature from items so it doesn't get stored
+            removeFeature();
+
+		    // reset the feature we're referring to to be the original feature item
+            feature = featuresMap.get(newName);
+		}
+
+        // location refers to feature object - either new feature or original one retrieved from map
+        Item location = getLocation();
+        location.removeReference("feature");
+        location.setReference("feature", feature);
+    }
+
+    /*
     public void process(GFF3Record record) {
 	
 		Item feature = getFeature();
 		
 		if(feature.getAttribute("primaryIdentifier") == null)
 			return;
-			
+
 		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
-		
+
 		Matcher matcher = Pattern.compile("RGD").matcher(ftrName);
-		
+
 		String newName = matcher.replaceAll("");
-		
+
 		feature.setAttribute("primaryIdentifier", newName);
-		
+        System.out.println(newName);
+
+		if(featuresMap.get(newName) == null)
+		{
+			featuresMap.put(newName, feature);
+		}
+        removeFeature();
+
+        //System.out.println(featuresMap.get(newName));
+        Item location = getLocation();
+        location.removeReference("feature");
+        location.setReference("feature", featuresMap.get(newName));
 		/*
 		String recId = record.getId();
 		if(recId == null)
@@ -96,7 +143,8 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 		}
 		System.out.println(ftrName + "is now" + iDMap.get(ftrName));
 		System.out.println("Size of map: " + iDMap.size());
-		*/
+
     }
+    */
     
 }

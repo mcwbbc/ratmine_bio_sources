@@ -86,7 +86,7 @@ public class DoConverter extends BioFileConverter
 
         // only construct factory here so can be replaced by mock factory in tests
         flybaseResolverFactory = new FlyBaseIdResolverFactory("gene");
-        ontologyResolverFactory = new OntologyIdResolverFactory("DO");
+        ontologyResolverFactory = new OntologyIdResolverFactory("CTD");
 
         readConfig();
     }
@@ -188,15 +188,15 @@ public class DoConverter extends BioFileConverter
             }
 
             // type of gene product, we're not interested in at the moment
-            // String type = array[11];
+            //String type = array[11];
             String type = configs.get(taxonId).annotationType;
 
             // Wormbase has some proteins with UniProt accessions and some with WB:WP ids,
             // hack here to get just the UniProt ones.
-            if (("protein".equalsIgnoreCase(type) && !array[0].startsWith("UniProt"))
-                    || (!"protein".equalsIgnoreCase(type) && array[0].startsWith("UniProt"))) {
-                continue;
-            }
+            //if (("protein".equalsIgnoreCase(type) && !array[0].startsWith("UniProt"))
+            //        || (!"protein".equalsIgnoreCase(type) && array[0].startsWith("UniProt"))) {
+            //    continue;
+            //}
 
             // create unique key for go annotation
             GoTermToGene key = new GoTermToGene(productId, goId, qualifier);

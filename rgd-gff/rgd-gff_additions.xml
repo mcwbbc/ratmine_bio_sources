@@ -9,6 +9,5 @@
 	</class>
 
 	<class name="Congenic" extends="Assembly" is-interface="true"/>
-	</class>
 	
 </classes>

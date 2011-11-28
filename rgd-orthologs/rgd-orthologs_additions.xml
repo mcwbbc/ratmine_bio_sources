@@ -15,10 +15,6 @@
 		<collection name="homologues" referenced-type="Homologue" reverse-reference="gene"/>
 	</class>
 
-	<class name="Orthologue" extends="Homologue" is-interface="true">
-
-	</class>
-
 	<class name="OrthologueEvidence" is-interface="true">
 		<collection name="publications" referenced-type="Publication"/>
 		<reference name="evidenceCode" referenced-type="OrthologueEvidenceCode"/>

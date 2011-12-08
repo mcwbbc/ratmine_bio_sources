@@ -1,0 +1,5 @@
+<project name="omim2" default="default" basedir=".">
+  <description>build, test, package omim2</description>
+  
+  <import file="../../../imbuild/source.xml"/>
+</project>

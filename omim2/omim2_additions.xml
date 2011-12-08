@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- This file details any extensions needed to the data model to store data from this source, everything else is automatically generated from the model description so this is all we need to do to add to the model. -->
+<classes>
+	
+<class name="OMIM" is-interface="true">
+	<attribute name="primaryIdentifier" type="java.lang.String" />
+	<attribute name="dateEntered" type="java.lang.String" />
+	<attribute name="cytogenticLocation" type="java.lang.String"/>
+	<attribute name="title" type="java.lang.String"/>
+	<attribute name="status" type="java.lang.String"/>
+	<collection name="methods" referenced-type="OMIMMethod"/>
+	<collection name="genes" referenced-type="Gene" reverse-reference="OMIMRecords" />
+	<collection name="associatedDisorders" referenced-type="OMIM" />
+</class>
+
+<class name="OMIMMethod" is-interface="true">
+	<attribute name="code" type="java.lang.String"/>
+	<attribute name="description" type="java.lang.String"/>
+</class>
+
+</classes>

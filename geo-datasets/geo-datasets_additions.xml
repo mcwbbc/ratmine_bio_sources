@@ -13,6 +13,11 @@
 	
 	<class name="GEODataSet" extends="GEORecord" is-interface="true">
 		<attribute name="valueType" type="java.lang.String"/>
+		<reference name="geoSeries" referenced-type="GEOSeries" reverse-reference="geoDataSets"/>
+	</class>
+
+	<class name="GEOSeries" extends="GEORecord" is-interface="true">
+		<collection name="geoDataSets" referenced-type="GEODataSet" reverse-reference="geoSeries"/>
 	</class>
 	
 	<class name="Array" is-interface="true">

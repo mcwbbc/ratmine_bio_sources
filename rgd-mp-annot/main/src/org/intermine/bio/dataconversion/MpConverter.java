@@ -43,6 +43,7 @@ import org.intermine.xml.full.ReferenceList;
  * @author Julie Sullivan - updated to handle GAF 2.0
  * @author Xavier Watkins - refactored model
  * @author Andrew Vallejos - changed org.intermine.util to org.intermine.metadata
+ *                         - added prefix to product id line 177
  */
 public class MpConverter extends BioFileConverter
 {
@@ -175,7 +176,7 @@ public class MpConverter extends BioFileConverter
                         + taxonId + "' found in config file.");
             }
             int readColumn = config.readColumn();
-            String productId = array[readColumn];
+            String productId = "RGD:" + array[readColumn];
 
             String goId = array[4];
             String qualifier = array[3];

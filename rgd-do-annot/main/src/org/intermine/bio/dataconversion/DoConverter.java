@@ -42,6 +42,8 @@ import org.intermine.xml.full.ReferenceList;
  * @author Peter Mclaren - some additions to record the parents of a go term.
  * @author Julie Sullivan - updated to handle GAF 2.0
  * @author Xavier Watkins - refactored model
+ * @author Andrew Vallejos - changed util to metadata
+ *                         - updates to handle new annotation file format
  */
 public class DoConverter extends BioFileConverter
 {
@@ -174,7 +176,7 @@ public class DoConverter extends BioFileConverter
                         + taxonId + "' found in config file.");
             }
             int readColumn = config.readColumn();
-            String productId = array[readColumn];
+            String productId = "RGD:" + array[readColumn];
 
             String goId = array[4];
             String qualifier = array[3];

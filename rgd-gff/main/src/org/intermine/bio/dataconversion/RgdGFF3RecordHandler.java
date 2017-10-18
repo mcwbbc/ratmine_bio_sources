@@ -62,9 +62,57 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 		Matcher matcher = Pattern.compile("RGD").matcher(ftrName);
 		String newName = matcher.replaceAll("");
 
+		String recordType = record.getType();
+
 		if (featuresMap.get(newName) == null) {
-		    // new feature
-			featuresMap.put(newName, feature);
+			// new feature
+			if("gene".equals(recordType)){
+				try{	
+					// Parse the attribute column of the GFF file for feature attributes
+					// GFF Attribute Name is mapped to the Feature Attribute symbol in the RatMine Gene Model
+					String symbol = record.getAttributes().get("Name").get(0);
+					feature.setAttribute("symbol", symbol);
+					String name = record.getAttributes().get("fullName").get(0);
+					feature.setAttribute("name", name);
+					String desc = record.getAttributes().get("Note").get(0);
+					feature.setAttribute("description", desc);
+					String geneType = record.getAttributes().get("geneType").get(0);
+					feature.setAttribute("geneType", geneType);
+
+					//pull NCBI Gene Number from xref
+					for( String xref : record.getAttributes().get("Dbxref")){
+						Matcher mXref = Pattern.compile("NCBIGene:(\\d+)").matcher(xref);
+						while(mXref.find()){
+							feature.setAttribute("ncbiGeneNumber", mXref.group(0));
+						} //if
+					} //for attributes
+				} catch (NullPointerException e) {
+					// not sure what to do with a worthless error System.out.println(e.getMessage());
+				} finally {
+					featuresMap.put(newName, feature);
+				}
+			} else if("QTL".equals(recordType)){
+				try{
+					String lod = record.getAttributes().get("LOD").get(0);
+					if(!"null".equals(lod)){ feature.setAttribute("LOD", lod); }
+					//String name = record.getAttributes().get("QTL").get(0);
+					//feature.setAttribute("name", name);
+					feature = getAndSetAttribute(record, "fullName", feature, "description");
+				} catch (NullPointerException e){
+					// TODO: figure out what to do with a worthless error message
+				} finally {
+					featuresMap.put(newName, feature);
+				}
+			
+			} else if("SimpleSequenceLengthVariation".equals(recordType)){
+				try{
+					feature = getAndSetAttribute(record, "name", feature, "symbol");
+				} catch (NullPointerException e){
+					// TODO: figure out what to do with a worthless error message
+				} finally {
+					featuresMap.put(newName, feature);
+				}
+			}
 		} else {
 		    // we've already seen this feature
 
@@ -79,77 +127,17 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
         Item location = getLocation();
         if(location == null)
 	{
-		System.out.println("Error parsing feature with ID: " + ftrName);
+		System.out.println("Error parsing feature type " + recordType + " with ID: " + ftrName);
 	} else {
 		location.removeReference("feature");
         	location.setReference("feature", feature);
 	}
     }	
 
-    /*
-    public void process(GFF3Record record) {
-	
-		Item feature = getFeature();
-		
-		if(feature.getAttribute("primaryIdentifier") == null)
-			return;
-
-		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
-
-		Matcher matcher = Pattern.compile("RGD").matcher(ftrName);
-
-		String newName = matcher.replaceAll("");
-
-		feature.setAttribute("primaryIdentifier", newName);
-        System.out.println(newName);
-
-		if(featuresMap.get(newName) == null)
-		{
-			featuresMap.put(newName, feature);
-		}
-        removeFeature();
-
-        //System.out.println(featuresMap.get(newName));
-        Item location = getLocation();
-        location.removeReference("feature");
-        location.setReference("feature", featuresMap.get(newName));
-		/*
-		String recId = record.getId();
-		if(recId == null)
-			return;
-		
-		if(iDMap.containsKey(recId)){
-			iDMap.put(recId, iDMap.get(recId) + 1);
-			record.setId(recId + ":" + iDMap.get(recId));
-		}
-		else{
-			iDMap.put(recId, 1);
-			System.out.println("Adding 1 to " + recId);
-			System.out.println(record.getAttributes());
-		}
-		System.out.println(recId + "is now " + iDMap.get(recId));
-		
-		try{
-			System.in.read();
-		}
-		catch(IOException e)
-		{}
-
-		// String clsName = feature.getClassName();
-					
-		if(iDMap.containsKey(ftrName)){
-			iDMap.put(ftrName, iDMap.get(ftrName) + 1);
-			feature.setAttribute("primaryIdentifier", 
-				ftrName + ":" + iDMap.get(ftrName));
-		}
-		else{
-			iDMap.put(ftrName, 1);
-			System.out.println("Adding 1 to " + ftrName);
-		}
-		System.out.println(ftrName + "is now" + iDMap.get(ftrName));
-		System.out.println("Size of map: " + iDMap.size());
-
+    private Item getAndSetAttribute(GFF3Record record, String gffAttr, Item feature, String featureAttr){
+	String rAttr = record.getAttributes().get(gffAttr).get(0);
+	feature.setAttribute(featureAttr, rAttr);
+	return feature;
     }
-    */
     
 }

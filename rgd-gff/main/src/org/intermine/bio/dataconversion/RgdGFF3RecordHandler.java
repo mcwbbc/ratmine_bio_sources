@@ -83,7 +83,7 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 					for( String xref : record.getAttributes().get("Dbxref")){
 						Matcher mXref = Pattern.compile("NCBIGene:(\\d+)").matcher(xref);
 						while(mXref.find()){
-							feature.setAttribute("ncbiGeneNumber", mXref.group(0));
+							feature.setAttribute("ncbiGeneNumber", mXref.group(1));
 						} //if
 					} //for attributes
 				} catch (NullPointerException e) {

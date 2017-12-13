@@ -59,11 +59,12 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 			return;
 		}
 		String ftrName = feature.getAttribute("primaryIdentifier").getValue();
-		Matcher matcher = Pattern.compile("RGD").matcher(ftrName);
+		Matcher matcher = Pattern.compile("RGD:").matcher(ftrName);
 		String newName = matcher.replaceAll("");
+		feature.setAttribute("secondaryIdentifier", newName);
 
+		// Sequece Type specific attribute field parsing
 		String recordType = record.getType();
-
 		if (featuresMap.get(newName) == null) {
 			// new feature
 			if("gene".equals(recordType)){

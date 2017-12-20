@@ -8,6 +8,9 @@
 <class name="Gene" is-interface="true">
   <collection name="pwAnnotation" referenced-type="PWAnnotation"/>
 </class>
+<class name="QTL" is-interface="true">
+  <collection name="pwAnnotation" referenced-type="PWAnnotation"/>
+</class>
 <class name="PWEvidence" is-interface="true">
   <reference name="code" referenced-type="PWEvidenceCode" />
   <collection name="publications" referenced-type="Publication"/>

@@ -425,7 +425,10 @@ public class PwConverter extends BioFileConverter
             // TODO use values in config
             clsName = "Protein";
             idField = "primaryAccession";
-        } else {
+        } else if(("qtl").equalsIgnoreCase(type)) {
+	    clsName = "QTL";
+            idField = "primaryIdentifier"; 
+	} else {
             String typeCls = TypeUtil.javaiseClassName(type);
 
             if (getModel().getClassDescriptorByName(typeCls) != null) {

@@ -40,7 +40,7 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
         refsAndCollections = new HashMap<String, String>();
         refsAndCollections.put("Exon", "gene");
         refsAndCollections.put("CDS", "transcript");
-		refsAndCollections.put("MRNA", "gene");
+	refsAndCollections.put("MRNA", "gene");
 		
 		//Map<String, Item> featuresMap = new HashMap<String, Item>();
     }
@@ -96,8 +96,10 @@ public class RgdGFF3RecordHandler extends GFF3RecordHandler
 				try{
 					String lod = record.getAttributes().get("LOD").get(0);
 					if(!"null".equals(lod)){ feature.setAttribute("LOD", lod); }
-					//String name = record.getAttributes().get("QTL").get(0);
-					//feature.setAttribute("name", name);
+					//use the GFF3 alias attribute
+					//all primary identifiers in ratmine start with RGD:
+					String alias = record.getAttributes().get("Alias").get(0);
+					feature.setAttribute("primaryIdentifier", alias);
 					feature = getAndSetAttribute(record, "fullName", feature, "description");
 				} catch (NullPointerException e){
 					// TODO: figure out what to do with a worthless error message

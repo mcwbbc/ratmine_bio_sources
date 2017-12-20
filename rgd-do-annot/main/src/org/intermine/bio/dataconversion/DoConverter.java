@@ -425,7 +425,11 @@ public class DoConverter extends BioFileConverter
             // TODO use values in config
             clsName = "Protein";
             idField = "primaryAccession";
-        } else {
+        } else if ("qtl".equalsIgnoreCase(type)){
+	   // TODO use values in config file 
+	   clsName = "QTL";
+	   idField = "primaryIdentifier";
+	} else {
             String typeCls = TypeUtil.javaiseClassName(type);
 
             if (getModel().getClassDescriptorByName(typeCls) != null) {

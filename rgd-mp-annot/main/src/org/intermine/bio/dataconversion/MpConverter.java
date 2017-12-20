@@ -425,7 +425,10 @@ public class MpConverter extends BioFileConverter
             // TODO use values in config
             clsName = "Protein";
             idField = "primaryAccession";
-        } else {
+        } else if ("qtl".equalsIgnoreCase(type)){ //Setting for QTL records 
+	    clsName = "QTL";
+	    idField = "primaryIdentifier";
+	} else {
             String typeCls = TypeUtil.javaiseClassName(type);
 
             if (getModel().getClassDescriptorByName(typeCls) != null) {

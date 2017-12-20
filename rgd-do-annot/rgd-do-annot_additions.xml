@@ -8,6 +8,9 @@
 <class name="Gene" is-interface="true">
   <collection name="doAnnotation" referenced-type="DOAnnotation"/>
 </class>
+<class name="QTL" is-interface="true">
+  <collection name="doAnnotation" referenced-type="DOAnnotation"/>
+</class>
 <class name="DOEvidence" is-interface="true">
   <reference name="code" referenced-type="DOEvidenceCode" />
   <collection name="publications" referenced-type="Publication"/>

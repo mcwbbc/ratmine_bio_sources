@@ -189,9 +189,9 @@ public class PwConverter extends BioFileConverter
                         + "found for pwterm " + goId + " and productId " + productId);
             }
 
-            // type of gene product, we're not interested in at the moment
-            // String type = array[11];
-            String type = configs.get(taxonId).annotationType;
+            // type of gene product, use GAF not config file 
+            String type = array[11];
+            //String type = configs.get(taxonId).annotationType;
 
             // Wormbase has some proteins with UniProt accessions and some with WB:WP ids,
             // hack here to get just the UniProt ones.
